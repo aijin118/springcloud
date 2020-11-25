@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.siwen.PaymentDao">
+    <insert id="addPayment" parameterType="cn.siwen.cloud.cloud.entity.Payment">
+      insert into payment(serial) values (#{serial})
+    </insert>
+
+    <resultMap id="basePayment" type="cn.siwen.cloud.cloud.entity.Payment">
+        <id column="id" property="id"/>
+        <result column="serial" property="serial"/>
+    </resultMap>
+
+    <select id="findPaymentById" parameterType="Long" resultMap="basePayment">
+      select * from payment where id=#{id}
+    </select>
+
+
+</mapper>
